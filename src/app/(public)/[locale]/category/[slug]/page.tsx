@@ -29,6 +29,7 @@ type Props = {
 
 export async function generateStaticParams() {
   const categories = await getCategories()
+  if (!categories.length) return [{ slug: '_placeholder' }]
   return categories.map((category) => ({ slug: category.slug }))
 }
 
@@ -36,12 +37,13 @@ export async function generateMetadata({
   params,
   searchParams,
 }: Props): Promise<Metadata> {
-  const [{ slug }, query] = await Promise.all([params, searchParams])
-  const category = await getCategory(slug)
-
-  if (!category) {
-    return { title: 'Topic not found', robots: { index: false, follow: true } }
-  }
+  
+  
+  const { slug } = await params
+const category = await getCategory(slug)
+if (!category)
+  return { title: 'Category not found', robots: { index: false, follow: true } }
+const query = await searchParams
 
   const description =
     category.metaDescription ??

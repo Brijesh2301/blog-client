@@ -25,6 +25,7 @@ type Props = { params: Promise<{ locale: Locale; slug: string }> }
 
 export async function generateStaticParams() {
   const series = await getAllSeries()
+  if (!series.length) return [{ slug: '_placeholder' }]
   return series.map((item) => ({ slug: item.slug }))
 }
 

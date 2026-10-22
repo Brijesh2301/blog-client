@@ -72,7 +72,7 @@ async function request<T>(path: string): Promise<T | null> {
     headers: { Accept: 'application/json' },
   })
 
-  if (res.status === 404) return null
+if (res.status === 404 || res.status === 422) return null
   if (!res.ok) {
     throw new ApiError(res.status, `GET ${path} failed with ${res.status}`)
   }

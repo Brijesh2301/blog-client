@@ -30,6 +30,7 @@ type Props = {
 export async function generateStaticParams() {
   const tags = await getTags()
   // Only prerender tags that are actually indexable; the rest render on demand.
+  if (!tags.length) return [{ slug: '_placeholder' }]
   return tags.filter((tag) => tag.shouldIndex).map((tag) => ({ slug: tag.slug }))
 }
 
@@ -37,9 +38,10 @@ export async function generateMetadata({
   params,
   searchParams,
 }: Props): Promise<Metadata> {
-  const [{ slug }, query] = await Promise.all([params, searchParams])
-  const tag = await getTag(slug)
-  if (!tag) return { title: 'Tag not found', robots: { index: false, follow: true } }
+  const { slug } = await params
+const tag = await getTag(slug)
+if (!tag) return { title: 'Tag not found', robots: { index: false, follow: true } }
+const query = await searchParams
 
   return paginatedMetadata(
     {

@@ -1,3 +1,5 @@
+
+
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
@@ -36,6 +38,8 @@ type Props = {
 
 export async function generateStaticParams() {
   const authors = await getAuthors()
+  if (!authors.length) return [{ slug: '_placeholder' }]
+
   return authors.map((author) => ({ slug: author.slug }))
 }
 
@@ -43,10 +47,11 @@ export async function generateMetadata({
   params,
   searchParams,
 }: Props): Promise<Metadata> {
-  const [{ slug }, query] = await Promise.all([params, searchParams])
-  const author = await getAuthor(slug)
-  if (!author)
-    return { title: 'Author not found', robots: { index: false, follow: true } }
+ const { slug } = await params
+const author = await getAuthor(slug)
+if (!author)
+  return { title: 'Author not found', robots: { index: false, follow: true } }
+const query = await searchParams
 
   const description = author.bio
     ? truncate(author.bio, 160)

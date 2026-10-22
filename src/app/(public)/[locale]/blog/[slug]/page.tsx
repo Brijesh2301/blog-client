@@ -90,6 +90,7 @@ function listenSeconds(post: {
  */
 export async function generateStaticParams() {
   const entries = await getAllPostSlugs()
+  if (!entries.length) return [{ slug: '_placeholder', locale: 'en' }]
   return entries.map(({ slug, locale }) => ({ slug, locale }))
 }
 
