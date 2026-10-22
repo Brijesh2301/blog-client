@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="Devlume">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="512" y2="512" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#8b5cf6"/>
+      <stop offset="55%" stop-color="#a78bfa"/>
+      <stop offset="100%" stop-color="#22d3ee"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" fill="url(#g)"/>
+  <path d="M202 186h47.2c42 0 70.8 26.6 70.8 70s-28.8 70-70.8 70H202V186Zm31.8 28.7v82.6h15.4c23.6 0 39-15.6 39-41.3s-15.4-41.3-39-41.3h-15.4Z" fill="#fff" fill-opacity="0.96"/>
+</svg>
