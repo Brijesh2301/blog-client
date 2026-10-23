@@ -53,6 +53,7 @@ const NOINDEX_PREFIXES = [
   '/api',
   '/search',
   '/login',
+   '/forgot-password',
   '/register',
   '/reset-password',
   '/verify-email',
@@ -98,6 +99,8 @@ const KNOWN_TOP_LEVEL = new Set([
   'authors',
   'search',
   'login',
+  'forgot-password',
+  'reset-password',
   'saved',
   'design-system',
   // The static page set, which must stay in step with content/pages.ts.
