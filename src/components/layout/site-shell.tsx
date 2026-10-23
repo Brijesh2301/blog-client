@@ -19,7 +19,7 @@ export function SiteShell({ locale }: { locale: Locale }) {
   React.useEffect(() => {
     function onKeyDown(event: KeyboardEvent) {
       // Cmd+K on macOS, Ctrl+K elsewhere.
-      if (event.key.toLowerCase() === 'k' && (event.metaKey || event.ctrlKey)) {
+ if (event.key?.toLowerCase() === 'k' && (event.metaKey || event.ctrlKey)) {
         event.preventDefault()
         setSearchOpen((prev) => !prev)
       }
