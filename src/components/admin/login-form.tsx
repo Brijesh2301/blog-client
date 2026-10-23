@@ -7,6 +7,7 @@ import * as React from 'react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { AdminApiError, adminRequest } from '@/lib/admin-api'
+import Link from 'next/link'
 
 /**
  * Sign-in form.
@@ -92,6 +93,10 @@ export function LoginForm() {
         required
         disabled={pending}
       />
+
+ <Link href="/forgot-password" className="text-primary -mt-2 self-end text-sm hover:underline">
+  Forgot password?
+</Link>
 
       <Button type="submit" size="lg" disabled={pending} className="mt-1">
         {pending ? (
